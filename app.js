@@ -1,6 +1,7 @@
 const express = require('express');
 const app = express();
 require('dotenv').config()
+const { User } = require('./server/models');
 console.log(process.env)
 const PORT = process.env.PORT || 5000;
 
