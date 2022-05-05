@@ -1,0 +1,18 @@
+{
+  "development": {
+    "username": "postgres",
+    "password": "password",
+    "database": "postgres",
+    "host": "localhost",
+    "dialect": "postgres",
+    "logging": true
+  },
+  "production": {
+    "use_env_variable": "DATABASE_URL",
+    "logging": false
+  },
+  "staging": {
+    "use_env_variable": "DATABASE_URL",
+    "logging": false
+  }
+}
