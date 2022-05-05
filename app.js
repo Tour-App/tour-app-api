@@ -1,6 +1,8 @@
 const express = require('express');
 const app = express();
-const PORT = 5001;
+require('dotenv').config()
+console.log(process.env)
+const PORT = process.env.PORT || 5000;
 
 app.get('/', (req, res) => {
   res.send('Server activo ✅');
