@@ -1,6 +1,15 @@
 # Proyecto "Tours App"
 
+## Pasos para crear base de datos local (momentaneo hasta que tengamos Docker)
 
+### Windows
+1. Abrir `SQL Shell`. 
+2. Crear base de datos nueva con el nombre `tour_app`, con el siguiente comando, `CREATE DATABASE tour_app;`. 
+3. Asegurarnos que la contraseña sea `password`. 
+### Mac
+1. Abrir `psql`. 
+2. Crear base de datos nueva con el nombre `tour_app`, con el siguiente comando, `CREATE DATABASE tour_app;`. 
+3. Asegurarnos que la contraseña sea `password`. 
 ## Pasos para poder correr el proyecto en local 
 
 1. Corre `npm install`
