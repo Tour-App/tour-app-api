@@ -2,12 +2,11 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const app = express();
 require('dotenv').config()
-const { User } = require('./server/models');
 
 const PORT = process.env.PORT || 5000;
 const router = require('./server/routes');
 
-app.use(bodyParser.urlencoded({ exteded: false }));
+app.use(bodyParser.json({ type: 'application/json' }));
 
 app.get('/', (req, res) => {
   res.send('Server activo ✅');
