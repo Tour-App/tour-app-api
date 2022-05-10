@@ -6,6 +6,7 @@
 1. Abrir `SQL Shell`. 
 2. Crear base de datos nueva con el nombre `tour_app`, con el siguiente comando, `CREATE DATABASE tour_app;`. 
 3. Asegurarnos que la contraseña sea `password`. 
+
 ### Mac
 1. Abrir `psql`. 
 2. Crear base de datos nueva con el nombre `tour_app`, con el siguiente comando, `CREATE DATABASE tour_app;`. 
