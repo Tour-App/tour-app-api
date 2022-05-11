@@ -39,8 +39,26 @@ const updateUser = () => {
   // TODO 2 - Actualizar información del usuario (Rocio)
 }
 
-const deleteUser = () => {
+const deleteUser = async (req, res) => {
   // TODO 3 -Borrar información del usuario (Belem)
+  let userId = req.params.id;
+  let deletedUser = null;
+  try {
+    deletedUser = await user.destroy({
+      where: {
+        id: userId
+      }
+    });
+  } catch(err) {
+    console.error(err);
+    return res.status(402).json({ error: err })
+  }
+  if (deletedUser === 1) {
+    return res.status(200).json({message: "Usuario borrado exitosamente"})
+  }
+  if (deletedUser === 0) {
+    return res.status(402).json({message: "El usuario que intentas borrar, no existe"})
+  }
 }
 
 module.exports = {
