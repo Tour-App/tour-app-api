@@ -15,15 +15,24 @@ const getCities = async (req, res) => {
 
 //GetCity
 const getCity = async (req, res) => {
-  
+  let selectedCity = [];
+  let cityId = req.params.id;
+  try {
+    selectedCity =  await city.findAll({
+      where: {
+        id: cityId
+      } 
+    });
+  } catch(err) {
+    console.error(err);
+    return res.status(400).json({error: err})
+  }
+
+  return res.status(200).json(selectedCity)
 }
 
 //CreateCity
 const createCity = async (req, res) => {
-
-  console.log(req.body);
-
-
   let createdCity = null;
   try {
     createdCity = await city.create(req.body); 
@@ -39,13 +48,48 @@ const createCity = async (req, res) => {
 }
 
 //UpdateCity
-const updateCity = () => {
-
-}
+const updateCity = async (req, res) => {
+  let cityId = req.params.id;
+  let {name, description, state} = req.body;
+  let cityToUpdate = await city.findByPk(cityId)
+  try {
+     cityToUpdate = await city.update({
+      name: name,
+      description: description,
+      state: state
+    },
+      {where: {
+        id: cityId
+      }
+    })
+  } catch(err) {
+    console.error(err);
+    if(!cityToUpdate) {
+      return res.status(402).json({message: 'La ciudad que intentas modificar no existe'})
+    }
+    return res.status(402).json({error: err})
+  }
+    return res.status(200).json(cityToUpdate)
+  } 
 
 //DeleteCity
-const deleteCity = () => {
-
+const deleteCity = async(req, res) => {
+  let cityId = req.params.id;
+  let cityToDelete = null;
+  try{
+    cityToDelete = await city.delete({
+      where: {
+        id: cityId
+      }
+    })
+  } catch(err) {
+    console.error(err)
+    if(!cityToDelete) {
+      return res.status(402).json({message: 'La ciudad que intentas borrar no existe'})
+    }
+    return res.status(402).json({error: err})
+  }
+  return res.status(204).json({message: 'La ciudad ha sido borrada exitosamente'})
 }
 
 module.exports = {
