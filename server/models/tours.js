@@ -17,14 +17,14 @@ module.exports = (sequelize, DataTypes) => {
     id: {
       allowNull: false,
       primaryKey: true,
-      type: Sequelize.UUID,
-      defaultValue: Sequelize.UUIDV4
+      type: DataTypes.UUID,
+      defaultValue: DataTypes.UUIDV4
     },
     description: {
-      type: Sequelize.STRING
+      type: DataTypes.STRING
     },
     name: {
-      type: Sequelize.STRING
+      type: DataTypes.STRING
     },
   }, {
     sequelize,
