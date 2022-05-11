@@ -35,5 +35,7 @@ app.use('/api', router);
 
 
 // TODO 20 - CRUD de Tours (Diego)
+// TODO 21 - Migración de Tours (Misael)
+// TODO 22 - Modelo de Tours (Misael)
 
 app.listen(PORT, () => console.log(`Èl servidor inicio en el puerto ${PORT}`))
