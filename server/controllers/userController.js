@@ -52,11 +52,11 @@ const createUser = async (req, res) => {
 
 
 const updateUser = () => {
-  // TODO 2 - Actualizar información del usaurio
+  // TODO 2 - Actualizar información del usuario (Rocio)
 }
 
 const deleteUser = () => {
-  // TODO 3 -Borrar información del usuario
+  // TODO 3 -Borrar información del usuario (Belem)
 }
 
 module.exports = {
