@@ -12,11 +12,6 @@ const getPlaces = async (_, res) => {
 
 const getPlace = async (req, res) => {
   const { id } = req.params;
-  if (!id) {
-    return res.json({
-      message: "Lugar no encontrado",
-    });
-  }
   try {
     const placeFound = await place.findOne({
       where: {
@@ -45,20 +40,20 @@ const createPlace = async (req, res) => {
 
 const updatePlace = async (req, res) => {
   const { id } = req.params;
-  if (!id) {
-    return res.json({
-      message: "Lugar no encontrado",
-    });
-  }
   try {
-    await place.update(req.body, {
+    const placeUpdated = await place.update(req.body, {
       where: {
         id,
       },
+      returning: true,
     });
-    return res.status(200).json({
-      message: "Lugar actualizado",
-    });
+    if (!placeUpdated[0]) {
+      return res.json({
+        message: "Lugar no encontrado",
+      });
+    }
+    const data = placeUpdated[1][0].get();
+    return res.status(200).json(data);
   } catch (err) {
     return res.status(402).json({ error: err.message });
   }
@@ -66,11 +61,6 @@ const updatePlace = async (req, res) => {
 
 const deletePlace = async (req, res) => {
   const { id } = req.params;
-  if (!id) {
-    return res.json({
-      message: "Lugar no encontrado",
-    });
-  }
   try {
     let placeDeleted = await place.destroy({
       where: {
@@ -79,7 +69,7 @@ const deletePlace = async (req, res) => {
     });
     if (!placeDeleted) {
       return res.json({
-        message: "No existe el lugar",
+        message: "Lugar no encontrado",
       });
     }
     return res.json({
