@@ -14,6 +14,12 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   city.init({
+    id: {
+      type: DataTypes.UUID,
+      allowNull: false,
+      primaryKey: true,
+      defaultValue: DataTypes.UUIDV4,
+    },
     first_name: DataTypes.STRING,
     last_name: DataTypes.STRING,
     email: DataTypes.STRING
