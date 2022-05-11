@@ -53,12 +53,10 @@ const deleteUser = async (req, res) => {
     console.error(err);
     return res.status(402).json({ error: err })
   }
-  if (deletedUser === 1) {
-    return res.status(200).json({message: "Usuario borrado exitosamente"})
-  }
-  if (deletedUser === 0) {
+  if (!deletedUser) {
     return res.status(402).json({message: "El usuario que intentas borrar, no existe"})
   }
+  return res.status(200).json({message: "Usuario borrado exitosamente"})
 }
 
 module.exports = {
