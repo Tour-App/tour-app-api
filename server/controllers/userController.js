@@ -12,6 +12,10 @@ const getUsers = async (req, res) => {
   return res.status(200).json(users)
 }
 
+const getUser = () => {
+  // TODO 4 - Obten la información de un solo usuario
+}
+
 const createUser = async (req, res) => {
   // Validate data
   console.log(req.body);
@@ -31,8 +35,18 @@ const createUser = async (req, res) => {
   return res.status(200).json(createdUser);
 }
 
+const updateUser = () => {
+  // TODO 2 - Actualizar información del usaurio
+}
+
+const deleteUser = () => {
+  // TODO 3 -Borrar información del usuario
+}
 
 module.exports = {
-  getUsers,
-  createUser,
+  getAll: getUsers,
+  getOne: getUser,
+  create: createUser,
+  update: updateUser,
+  delete: deleteUser,
 }
