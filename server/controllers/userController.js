@@ -12,9 +12,22 @@ const getUsers = async (req, res) => {
   return res.status(200).json(users)
 }
 
-const getUser = () => {
+const getUser = async (req, res,) => {
   // TODO 4 - Obten la información de un solo usuario
+  let userId = req.params.id;
+  let searchedUser = null;
+  
+  try {
+    searchedUser= await user.findOne({
+      where: { id: userId}
+    });
+  }catch(err) {
+    console.error(err);
+    return res.status(400).json({ error: err })
+  }
+  return res.status(200).json(searchedUser)
 }
+
 
 const createUser = async (req, res) => {
   // Validate data
@@ -34,6 +47,9 @@ const createUser = async (req, res) => {
 
   return res.status(200).json(createdUser);
 }
+
+
+
 
 const updateUser = () => {
   // TODO 2 - Actualizar información del usaurio
