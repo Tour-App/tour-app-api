@@ -40,7 +40,6 @@ const updateUser = () => {
 }
 
 const deleteUser = async (req, res) => {
-  // TODO 3 -Borrar información del usuario (Belem)
   let userId = req.params.id;
   let deletedUser = null;
   try {
@@ -50,7 +49,6 @@ const deleteUser = async (req, res) => {
       }
     });
   } catch(err) {
-    console.error(err);
     return res.status(402).json({ error: err })
   }
   if (!deletedUser) {
