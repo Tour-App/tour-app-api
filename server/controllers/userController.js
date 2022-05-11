@@ -35,9 +35,15 @@ const createUser = async (req, res) => {
   return res.status(200).json(createdUser);
 }
 
-const updateUser = () => {
-  // TODO 2 - Actualizar información del usuario (Rocio)
-}
+const updateUser = (async (req, res) => {
+  // req.params.id;
+
+  const updatedUser = await user.set(req.body);
+  await user.save();
+
+  res.status(200).json(updatedUser);
+
+})
 
 const deleteUser = () => {
   // TODO 3 -Borrar información del usuario (Belem)
