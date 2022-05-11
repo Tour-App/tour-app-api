@@ -13,7 +13,7 @@ const getUsers = async (req, res) => {
 }
 
 const getUser = () => {
-  // TODO 4 - Obten la información de un solo usuario
+  // TODO 4 - Obten la información de un solo usuario (Luis)
 }
 
 const createUser = async (req, res) => {
@@ -36,11 +36,11 @@ const createUser = async (req, res) => {
 }
 
 const updateUser = () => {
-  // TODO 2 - Actualizar información del usaurio
+  // TODO 2 - Actualizar información del usuario (Rocio)
 }
 
 const deleteUser = () => {
-  // TODO 3 -Borrar información del usuario
+  // TODO 3 -Borrar información del usuario (Belem)
 }
 
 module.exports = {

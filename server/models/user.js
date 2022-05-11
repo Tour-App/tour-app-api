@@ -14,7 +14,7 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   User.init({
-    // TODO 1 - Agregar el manejor faltante de datos
+    // TODO 1 - Agregar el manejor faltante de datos (Adrian)
     id: {
       type: DataTypes.UUID,
       allowNull: false,

@@ -10,6 +10,6 @@ router.post('/users/:id', user.update);
 router.get('/users/:id', user.getOne);
 router.delete('/users/:id', user.delete);
 
-// TODO 5 - Agregar CRUD de places
+// TODO 5 - Agregar CRUD de places (Brenda)
 
 module.exports = router;
