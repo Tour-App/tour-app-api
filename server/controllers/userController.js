@@ -1,7 +1,15 @@
 const { user } = require('../models');
 
-const getUsers = (req, res) => {
+const getUsers = async (req, res) => {
+  let users = [];
+  try {
+    users = await user.findAll();
+  } catch(err) {
+    console.error(err);
+    return res.status(400).json({ error: err })
+  }
 
+  return res.status(200).json(users)
 }
 
 const createUser = async (req, res) => {
@@ -9,13 +17,15 @@ const createUser = async (req, res) => {
   console.log(req.body);
 
   // Create user in database
-
   let createdUser = null;
   try {
-    await user.create(req.body); 
+    createdUser = await user.create(req.body); 
   } catch(err) {
     console.error(err);
-    res.status(404).json({ message: 'No pudimos crear al usuario'})
+    if  (err.name === 'SequelizeUniqueConstraintError') {
+      return res.status(402).json({ message: 'El usuario ya existe'});
+    }
+    return res.status(402).json({ error: err })
   }
 
   return res.status(200).json(createdUser);
