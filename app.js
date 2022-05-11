@@ -14,8 +14,8 @@ app.get('/', (req, res) => {
 
 app.use('/api', router);
 
-// TODO 6 - Migración para la tabla places 
-// TODO 7 - Crear el modelo para la entidad place
+// TODO 6 - Migración para la tabla places (Misael)
+// TODO 7 - Crear el modelo para la entidad place (Misael)
 
 // TODO 8 - Create place (Brenda)
 // TODO 9 - Update place (Brenda)
@@ -24,13 +24,16 @@ app.use('/api', router);
 // TODO 12 - Get one place (Brenda)
 
 // Stephano
-// TODO 13 - Migración para tabla cities 
-// TODO 14 - Crear el modelo para la entidad city
+// TODO 13 - Migración para tabla cities (Misael)
+// TODO 14 - Crear el modelo para la entidad city (Misael)
 
 // TODO 15 - Create city 
 // TODO 16 - Update city 
 // TODO 17 - Delete city 
 // TODO 18 - Get all city 
 // TODO 19 - Get one city 
+
+
+// TODO 20 - CRUD de Tours (Diego)
 
 app.listen(PORT, () => console.log(`Èl servidor inicio en el puerto ${PORT}`))
