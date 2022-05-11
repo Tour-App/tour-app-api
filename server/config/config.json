@@ -2,7 +2,7 @@
   "development": {
     "username": "postgres",
     "password": "password",
-    "database": "postgres",
+    "database": "tour_app",
     "host": "localhost",
     "dialect": "postgres",
     "logging": true
