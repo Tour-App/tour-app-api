@@ -14,9 +14,18 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   tours.init({
-    first_name: DataTypes.STRING,
-    last_name: DataTypes.STRING,
-    email: DataTypes.STRING
+    id: {
+      allowNull: false,
+      primaryKey: true,
+      type: Sequelize.UUID,
+      defaultValue: Sequelize.UUIDV4
+    },
+    description: {
+      type: Sequelize.STRING
+    },
+    name: {
+      type: Sequelize.STRING
+    },
   }, {
     sequelize,
     modelName: 'tours',
