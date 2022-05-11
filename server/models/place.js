@@ -20,19 +20,19 @@ module.exports = (sequelize, DataTypes) => {
       defaultValue: DataTypes.UUIDV4,
     },
     admin_name: {
-      type: Sequelize.STRING
+      type: DataTypes.STRING
     },
     admin_email: {
-      type: Sequelize.STRING
+      type: DataTypes.STRING
     },
     name: {
-      type: Sequelize.STRING
+      type: DataTypes.STRING
     },
     address_id: {
-      type: Sequelize.STRING
+      type: DataTypes.STRING
     },
     type: {
-      type: Sequelize.ENUM,
+      type: DataTypes.ENUM,
       values: [
         'restaurant',
         'museum',
@@ -43,31 +43,31 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: true
     },
     logo: {
-      type: Sequelize.STRING
+      type: DataTypes.STRING
     }, 
     description: {
-      type: Sequelize.STRING,
+      type: DataTypes.STRING,
     },
     phone_number: {
-      type: Sequelize.STRING,
+      type: DataTypes.STRING,
     },
     facebook_url: {
-      type: Sequelize.STRING,
+      type: DataTypes.STRING,
     },
     instagram_url: {
-      type: Sequelize.STRING,
+      type: DataTypes.STRING,
     },
     web_page_url: {
-      type: Sequelize.STRING,
+      type: DataTypes.STRING,
     },
     twitter_url: {
-      type: Sequelize.STRING,
+      type: DataTypes.STRING,
     },
     default_photo_id: {
-      type: Sequelize.STRING,
+      type: DataTypes.STRING,
     },
     city_id: {
-      type: Sequelize.STRING,
+      type: DataTypes.STRING,
     },
   }, {
     sequelize,
