@@ -15,7 +15,7 @@ router.delete("/users/:id", user.delete);
 
 router.get("/places", place.getAll);
 router.post("/places", place.create);
-router.patch("/places/:id", place.update);
+router.post("/places/:id", place.update);
 router.get("/places/:id", place.getOne);
 router.delete("/places/:id", place.delete);
 
