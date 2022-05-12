@@ -1,6 +1,5 @@
 const { city } = require('../city');
 
-//getCities
 const getCities = async (req, res) => {
   let cities = [];
   try {
@@ -13,7 +12,6 @@ const getCities = async (req, res) => {
   return res.status(200).json(cities)
 }
 
-//GetCity
 const getCity = async (req, res) => {
   let selectedCity = [];
   let cityId = req.params.id;
@@ -31,7 +29,6 @@ const getCity = async (req, res) => {
   return res.status(200).json(selectedCity)
 }
 
-//CreateCity
 const createCity = async (req, res) => {
   let createdCity = null;
   try {
@@ -47,7 +44,6 @@ const createCity = async (req, res) => {
   return res.status(200).json(createdCity);
 }
 
-//UpdateCity
 const updateCity = async (req, res) => {
   let cityId = req.params.id;
   let {name, description, state} = req.body;
@@ -72,7 +68,6 @@ const updateCity = async (req, res) => {
     return res.status(200).json(cityToUpdate)
   } 
 
-//DeleteCity
 const deleteCity = async(req, res) => {
   let cityId = req.params.id;
   let cityToDelete = null;
