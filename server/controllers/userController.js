@@ -59,7 +59,7 @@ const updateUser = (async (req, res) => {
       selectedUser.birth_date = birth_date;
 
       await selectedUser.save();
-      res.json(selectedUser);
+      return res.json(selectedUser);
     }
   } catch (error) {
 
