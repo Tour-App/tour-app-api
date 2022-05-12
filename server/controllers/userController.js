@@ -12,9 +12,24 @@ const getUsers = async (req, res) => {
   return res.status(200).json(users)
 }
 
-const getUser = () => {
-  // TODO 4 - Obten la información de un solo usuario (Luis)
+const getUser = async (req, res,) => {
+  let userId = req.params.id;
+  let searchedUser = null;
+  
+  try {
+    searchedUser= await user.findOne({
+      where: { id: userId}
+    });
+
+    return res.status(200).json(searchedUser)
+  
+  }catch(error) {
+    
+    return res.status(402).json({message: "El ID buscado no existe"})
+  }
 }
+
+
 
 const createUser = async (req, res) => {
   // Validate data
