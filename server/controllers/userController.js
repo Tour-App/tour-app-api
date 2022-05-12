@@ -50,15 +50,41 @@ const createUser = async (req, res) => {
   return res.status(200).json(createdUser);
 }
 
+const updateUser = (async (req, res) => {
+  const { id } = req.params;
 
+  let selectedUser = null;
+  try {
+    selectedUser = await user.findByPk(id);
+  } catch (error) {
+    return res.status(402).json({  message: error.message });
+  }
 
+  if (!selectedUser) {
+    return res.status(400).json({ message: 'No encontramos el usuario' })
+  }
 
-const updateUser = () => {
-  // TODO 2 - Actualizar información del usuario (Rocio)
-}
+  await selectedUser.update(req.body);
 
-const deleteUser = () => {
-  // TODO 3 -Borrar información del usuario (Belem)
+  return res.json(selectedUser);
+})
+
+const deleteUser = async (req, res) => {
+  let userId = req.params.id;
+  let deletedUser = null;
+  try {
+    deletedUser = await user.destroy({
+      where: {
+        id: userId
+      }
+    });
+  } catch(err) {
+    return res.status(402).json({ error: err })
+  }
+  if (!deletedUser) {
+    return res.status(402).json({message: "El usuario que intentas borrar, no existe"})
+  }
+  return res.status(200).json({message: "Usuario borrado exitosamente"})
 }
 
 module.exports = {

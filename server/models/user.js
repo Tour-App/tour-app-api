@@ -23,7 +23,29 @@ module.exports = (sequelize, DataTypes) => {
     },
     first_name: DataTypes.STRING,
     last_name: DataTypes.STRING,
-    email: DataTypes.STRING
+    email: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+    password: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+    age: DataTypes.INTEGER,
+    photo: DataTypes.STRING,
+    phone_number: DataTypes.STRING,
+    gender: {
+      type: DataTypes.ENUM,
+      values: ['hombre','mujer','otro']
+    },
+    identity_document: DataTypes.STRING,
+    status: {
+      type: DataTypes.ENUM,
+      values: ['active','suspended','on_trip'],
+      allowNull: false,
+      defaultValue: 'active'
+    }, 
+    birth_date: DataTypes.DATE
   }, {
     sequelize,
     modelName: 'user',
