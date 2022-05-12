@@ -66,8 +66,22 @@ const updateUser = (async (req, res) => {
   return res.json(selectedUser);
 })
 
-const deleteUser = () => {
-  // TODO 3 -Borrar información del usuario (Belem)
+const deleteUser = async (req, res) => {
+  let userId = req.params.id;
+  let deletedUser = null;
+  try {
+    deletedUser = await user.destroy({
+      where: {
+        id: userId
+      }
+    });
+  } catch(err) {
+    return res.status(402).json({ error: err })
+  }
+  if (!deletedUser) {
+    return res.status(402).json({message: "El usuario que intentas borrar, no existe"})
+  }
+  return res.status(200).json({message: "Usuario borrado exitosamente"})
 }
 
 module.exports = {
