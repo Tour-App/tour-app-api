@@ -42,7 +42,7 @@ const updateUser = (async (req, res) => {
     const selectedUser = await user.findByPk(id);
 
     if (selectedUser === null) {
-      res.status(400)
+     return res.status(400)
       throw new Error('Tarea no encontrada');
 
     } else {
