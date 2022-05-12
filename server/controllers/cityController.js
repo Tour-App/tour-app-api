@@ -47,8 +47,8 @@ const createCity = async (req, res) => {
 const updateCity = async (req, res) => {
   let cityId = req.params.id;
   let {name, description, state} = req.body;
-  let cityToUpdate = await city.findByPk(cityId)
   try {
+    let cityToUpdate = await city.findByPk(cityId)
      cityToUpdate = await city.update({
       name: name,
       description: description,

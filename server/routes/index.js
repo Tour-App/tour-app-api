@@ -17,7 +17,7 @@ router.delete('/users/:id', user.delete);
 router.get('/cities', city.getAll);
 router.get('/cities/:id', city.getOne);
 router.post('/cities', city.create);
-router.put('/cities/:id', city.update);
+router.post('/cities/:id', city.update);
 router.delete('/cities/:id', city.delete);
 
 module.exports = router;
