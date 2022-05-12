@@ -20,12 +20,15 @@ const getUser = async (req, res,) => {
     searchedUser= await user.findOne({
       where: { id: userId}
     });
-  }catch(err) {
-    console.error(err);
-    return res.status(400).json({ error: err })
+
+    return res.status(200).json(searchedUser)
+  
+  }catch(error) {
+    
+    return res.status(402).json({message: "El ID buscado no existe"})
   }
-  return res.status(200).json(searchedUser)
 }
+
 
 
 const createUser = async (req, res) => {
