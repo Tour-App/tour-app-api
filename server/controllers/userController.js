@@ -36,35 +36,34 @@ const createUser = async (req, res) => {
 }
 
 const updateUser = (async (req, res) => {
+  const { id } = req.params;
+  const { first_name, last_name, email, password, age, photo, phone_number, gender, identity_document, status, birth_date } = req.body;
+
+  let selectedUser = null;
   try {
-    const { id } = req.params;
-    const { first_name, last_name, email, password, age, photo, phone_number, gender, identity_document, status, birth_date } = req.body;
-    const selectedUser = await user.findByPk(id);
-
-    if (selectedUser === null) {
-     return res.status(400)
-      throw new Error('Tarea no encontrada');
-
-    } else {
-      selectedUser.first_name = first_name;
-      selectedUser.last_name = last_name;
-      selectedUser.email = email;
-      selectedUser.password = password;
-      selectedUser.age = age;
-      selectedUser.photo = photo;
-      selectedUser.phone_number = phone_number;
-      selectedUser.gender = gender;
-      selectedUser.identity_document = identity_document;
-      selectedUser.status = status;
-      selectedUser.birth_date = birth_date;
-
-      await selectedUser.save();
-      return res.json(selectedUser);
-    }
+    selectedUser = await user.findByPk(id);
   } catch (error) {
-
-    return res.status(500).json({  message: error.message });
+    return res.status(402).json({  message: error.message });
   }
+
+  if (!selectedUser) {
+    return res.status(400).json({ message: 'No encontramos el usuario' })
+  }
+
+  selectedUser.first_name = first_name;
+  selectedUser.last_name = last_name;
+  selectedUser.email = email;
+  selectedUser.password = password;
+  selectedUser.age = age;
+  selectedUser.photo = photo;
+  selectedUser.phone_number = phone_number;
+  selectedUser.gender = gender;
+  selectedUser.identity_document = identity_document;
+  selectedUser.status = status;
+  selectedUser.birth_date = birth_date;
+
+  await selectedUser.save();
+  return res.json(selectedUser);
 })
 
 const deleteUser = () => {
