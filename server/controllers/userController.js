@@ -13,7 +13,6 @@ const getUsers = async (req, res) => {
 }
 
 const getUser = async (req, res,) => {
-  // TODO 4 - Obten la información de un solo usuario
   let userId = req.params.id;
   let searchedUser = null;
   
