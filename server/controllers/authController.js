@@ -1,5 +1,6 @@
 const argon2 = require('argon2');
 const { user } = require('../models');
+const createToken = require('../utils/createToken');
 
 async function login(req, res) {
   const { email, password: passwordToTest } = req.body;
@@ -28,13 +29,37 @@ async function login(req, res) {
     isCorrectPassword = await argon2.verify(hashedPassword, passwordToTest);
   } catch(err) {
     console.error(`There was an error verifying password hash for ${email}`);
+    return res.status(404).json({ message: 'Error al hacer login' })
+  }
+
+  if (!isCorrectPassword) {
+    return res.status(403).json({ 
+      message: 'Contraseña incorrecta', 
+      code: 'auth/wrong-password'
+    })
+  }
+  
+  // 3. Crear un token de sesión
+  let token = null;
+  try {
+    token = await createToken({ 
+      id: userLogged.id, 
+      email: userLogged.email 
+    })
+  } catch(err) {
+    console.error(err);
+    return res.status(404).json({ message: 'Error al hacer login' })
   }
 
   res.status(200).json({
-    isCorrectPassword,
-    user: userLogged
+    token,
+    user: {
+      id: userLogged.id,
+      email: userLogged.email,
+      first_name: userLogged.first_name,
+      last_name: userLogged.last_name
+    }
   })
-  // 3. Crear un token de sesión
 }
 
 module.exports = {
