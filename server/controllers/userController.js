@@ -1,3 +1,4 @@
+const argon2 = require('argon2');
 const { user } = require('../models');
 
 const getUsers = async (req, res) => {
@@ -32,13 +33,23 @@ const getUser = async (req, res,) => {
 
 
 const createUser = async (req, res) => {
-  // Validate data
-  console.log(req.body);
+  const { password, email } = req.body;
+
+  let hash = null;
+  try {
+    hash = await argon2.hash(password);
+  } catch (err) {
+    console.log(`Hubo un error encriptando la contraseña del usuario ${req.body.email}`);
+    console.error(err);
+  }
 
   // Create user in database
   let createdUser = null;
   try {
-    createdUser = await user.create(req.body); 
+    createdUser = await user.create({
+      ...req.body,
+      password: hash
+    }); 
   } catch(err) {
     console.error(err);
     if  (err.name === 'SequelizeUniqueConstraintError') {

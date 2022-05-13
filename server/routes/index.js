@@ -4,8 +4,11 @@ const router = express.Router();
 const user = require("../controllers/userController");
 const place = require("../controllers/placesController");
 const city = require('../controllers/cityController')
+const auth = require('../controllers/authController');
 
-const auth = require('../middlewares/authenticationMiddleware');
+const authMiddleware = require('../middlewares/authenticationMiddleware');
+
+router.post('/auth/login', auth.login);
 
 router.get('/users', user.getAll);
 router.post('/users', user.create);
@@ -13,7 +16,7 @@ router.post('/users/:id', user.update);
 router.get('/users/:id', user.getOne);
 router.delete('/users/:id', user.delete);
 
-router.post("/places", auth, place.create);
+router.post("/places", authMiddleware, place.create);
 router.get("/places", place.getAll);
 router.post("/places/:id", place.update);
 router.get("/places/:id", place.getOne);
