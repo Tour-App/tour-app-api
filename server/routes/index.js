@@ -5,8 +5,13 @@ const user = require("../controllers/userController");
 const place = require("../controllers/placesController");
 const city = require('../controllers/cityController')
 const auth = require('../controllers/authController');
+const admin = require('../controllers/adminController');
+const adminAuth = require('../controllers/adminAuthController');
 
 const authMiddleware = require('../middlewares/authenticationMiddleware');
+
+router.post('/admins/auth/login', adminAuth.login);
+router.post('/admins', admin.create);
 
 router.post('/auth/login', auth.login);
 
