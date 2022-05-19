@@ -6,7 +6,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "nodemon ./app.js",
-    "migrate": "sequelize-cli db:migrate --config=\"./server/config/config.json\" --models-path=\"./server/models\" --migrations-path=\"./server/migrations\""
+    "migrate": "sequelize-cli db:migrate --config=\"./server/config/config.json\" --models-path=\"./server/models\" --migrations-path=\"./server/migrations\"",
+    "migration:undo": "sequelize-cli db:migrate:undo --config=\"./server/config/config.json\" --models-path=\"./server/models\" --migrations-path=\"./server/migrations\""
   },
   "author": "",
   "license": "ISC",
