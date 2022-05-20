@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon ./app.js",
+    "dev": "nodemon ./app.js",
+    "start": "node ./app.js",
     "migrate": "sequelize-cli db:migrate --config=\"./server/config/config.json\" --models-path=\"./server/models\" --migrations-path=\"./server/migrations\""
   },
   "author": "",
