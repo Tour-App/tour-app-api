@@ -9,7 +9,7 @@ const router = require('./server/routes');
 app.use(bodyParser.json({ type: 'application/json' }));
 
 app.get('/', (req, res) => {
-  res.send('Server up & running ✅');
+  res.send('Server up & running with CI & CD ✅');
 })
 
 app.use('/api', router);
