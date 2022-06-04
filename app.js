@@ -14,6 +14,8 @@ app.get('/', (req, res) => {
 
 app.use('/api', router);
 
+console.log('Pequeño cambio');
+
 // TODO 6 - Migración para la tabla places (Misael)
 // TODO 7 - Crear el modelo para la entidad place (Misael)
 
